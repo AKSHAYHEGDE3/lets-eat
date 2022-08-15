@@ -5,7 +5,7 @@ import { AntDesign } from '@expo/vector-icons';
 
 const RestaurantDetails = ({ name, img, rating, review_count, phone, address }) => {
     return (
-        <View>
+        <View style={{height:320}}>
             <Image
                 source={{ uri: img }}
                 style={{ width: '100%', height: 180 }}

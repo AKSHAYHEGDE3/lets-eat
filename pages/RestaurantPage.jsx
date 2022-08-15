@@ -2,10 +2,10 @@ import { View, Text, FlatList,ScrollView } from 'react-native'
 import React from 'react'
 import RestaurantDetails from '../components/RestaurantPage/RestaurantDetails'
 import { Divider } from 'react-native-elements'
-// import Menu from '../components/RestaurantPage/Menu';
-// import CartButton from '../components/RestaurantPage/CartButton';
 import { useSelector } from 'react-redux';
 import Menu from '../components/RestaurantPage/Menu';
+import CartButton from '../components/RestaurantPage/CartButton';
+import { Dimensions } from 'react-native';
 
 const foods = [
   {
@@ -58,7 +58,7 @@ const RestaurantPage = ({ route, navigation }) => {
   const cart = useSelector(state => state.cart)
 
   return (
-    <ScrollView>
+    <View>
       <RestaurantDetails
         name={route.params.name}
         img={route.params.img}
@@ -68,17 +68,23 @@ const RestaurantPage = ({ route, navigation }) => {
         address={route.params.address}
       />
       <Divider style={{ marginVertical: 10 }} />
-      
+
+      <ScrollView style={{
+        height:(cart.foods.length > 0)?Dimensions.get('window').height - 384:Dimensions.get('window').height - 334,
+      }}>
       {
         foods.map((item)=>{
             return <Menu key={item.id} id={item.id} title={item.title} description={item.description} price={item.price} image={item.image} />
         })
       }
+      </ScrollView>
       
-      {/* {
+      
+      
+      {
         (cart.foods.length > 0) && <CartButton price={cart.price} qty={cart.foods.length} navigation={navigation} />
-      } */}
-    </ScrollView>
+      }
+    </View>
   )
 }
 
