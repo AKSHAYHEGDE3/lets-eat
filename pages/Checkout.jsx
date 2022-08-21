@@ -4,11 +4,10 @@ import OrderCard from '../components/Checkout/OrderCard'
 import { Divider } from 'react-native-elements'
 import { useSelector } from 'react-redux'
 // LiPbVD5g4YiHevVhPqkQM7kP
-const Checkout = ({ navigation }) => {
+const Checkout = ({ navigation,route }) => {
 
     const cart = useSelector(state => state.cart)
     const price = cart.price
-
 
     return (
         <SafeAreaView style={{ padding: 10 }}>
@@ -68,7 +67,7 @@ const Checkout = ({ navigation }) => {
                             justifyContent: 'center',
                             alignItems: 'center'
                         }}
-                        onPress={()=>navigation.navigate('OrderCompleted')}
+                        onPress={()=>navigation.navigate('OrderCompleted',{total:(price - 10 + 2 + 5).toFixed(2),name:route.params.name})}
                         >
                             <Text style={{ color: 'white', fontSize: 22 }}>{`Place Order . $${(price - 10 + 2 + 5).toFixed(2)}`}</Text>
                         </TouchableOpacity>

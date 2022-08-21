@@ -82,7 +82,7 @@ const RestaurantPage = ({ route, navigation }) => {
       
       
       {
-        (cart.foods.length > 0) && <CartButton price={cart.price} qty={cart.foods.length} navigation={navigation} />
+        (cart.foods.length > 0) && <CartButton price={cart.price} name={route.params.name} qty={cart.foods.length} navigation={navigation} />
       }
     </View>
   )

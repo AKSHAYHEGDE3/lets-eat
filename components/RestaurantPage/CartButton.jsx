@@ -1,11 +1,11 @@
 import { View, Text, StyleSheet,TouchableOpacity } from 'react-native'
 import React from 'react'
 
-const CartButton = ({qty,price,navigation}) => {
+const CartButton = ({qty,price,navigation,name}) => {
     
     return (
         <View style={styles.cartBar}>
-            <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('Checkout')} >
+            <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('Checkout',{name:name})} >
                 <Text style={{ color: 'white' }}>{`${qty} Item | $${price}`}</Text>
                 <Text style={{ color: 'white', fontWeight: 'bold' }}>View Cart</Text>
             </TouchableOpacity>
